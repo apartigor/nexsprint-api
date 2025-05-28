@@ -12,7 +12,7 @@ namespace nexsprintAPI.Models
         [Required]
         public string PDF_Url { get; set; }
         [Required]
-        public string descricao { get; set; }
+        public string Descricao { get; set; }
         [Required]
         public int TotalPaginas { get; set; }
 

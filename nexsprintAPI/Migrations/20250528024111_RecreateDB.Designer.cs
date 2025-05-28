@@ -10,8 +10,8 @@ using nexsprintAPI.Data;
 namespace nexsprintAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250528022321_AddDescricaoModulo")]
-    partial class AddDescricaoModulo
+    [Migration("20250528024111_RecreateDB")]
+    partial class RecreateDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

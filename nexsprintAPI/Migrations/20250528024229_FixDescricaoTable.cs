@@ -5,25 +5,24 @@
 namespace nexsprintAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class AddDescricaoModulo : Migration
+    public partial class FixDescricaoTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
+            migrationBuilder.RenameColumn(
                 name: "descricao",
                 table: "Modulos",
-                type: "longtext",
-                nullable: false)
-                .Annotation("MySql:CharSet", "utf8mb4");
+                newName: "Descricao");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "descricao",
-                table: "Modulos");
+            migrationBuilder.RenameColumn(
+                name: "Descricao",
+                table: "Modulos",
+                newName: "descricao");
         }
     }
 }

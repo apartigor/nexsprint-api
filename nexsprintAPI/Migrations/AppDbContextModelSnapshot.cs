@@ -24,6 +24,10 @@ namespace nexsprintAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -34,10 +38,6 @@ namespace nexsprintAPI.Migrations
 
                     b.Property<int>("TotalPaginas")
                         .HasColumnType("int");
-
-                    b.Property<string>("descricao")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.HasKey("ModuloId");
 

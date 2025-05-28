@@ -10,8 +10,8 @@ using nexsprintAPI.Data;
 namespace nexsprintAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250528022039_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250528024229_FixDescricaoTable")]
+    partial class FixDescricaoTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,6 +26,10 @@ namespace nexsprintAPI.Migrations
                     b.Property<int>("ModuloId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Nome")
                         .IsRequired()

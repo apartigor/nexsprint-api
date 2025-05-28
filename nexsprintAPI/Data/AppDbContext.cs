@@ -19,17 +19,17 @@ namespace nexsprintAPI.Data
             .HasKey(u => u.NomeUsuario); // Chave primária com NomeUsuario
 
             modelBuilder.Entity<UserModulo>()
-                .HasKey(ul => new { ul.NomeUsuario, ul.ModuloId }); // Mapeia a relação de muitos pra muitos
+                .HasKey(um => new { um.NomeUsuario, um.ModuloId }); // Mapeia a relação de muitos pra muitos
 
             modelBuilder.Entity<UserModulo>()
-                .HasOne(ul => ul.User)
+                .HasOne(um => um.User)
                 .WithMany(u => u.UsersModulos)
-                .HasForeignKey(ul => ul.NomeUsuario);
+                .HasForeignKey(um => um.NomeUsuario);
 
             modelBuilder.Entity<UserModulo>()
-                .HasOne(ul => ul.Modulo)
+                .HasOne(um => um.Modulo)
                 .WithMany(l => l.UsersModulos)
-                .HasForeignKey(ul => ul.ModuloId);
+                .HasForeignKey(um => um.ModuloId);
 
         }
     }
