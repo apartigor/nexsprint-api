@@ -17,8 +17,14 @@ namespace nexsprintAPI.Controllers
             _appDbContext = appDbContext;
         }
 
+        // DTO Simples para salvar o progresso
+        public class ProgressoUpdateRequest
+        {
+            public double Pagina { get; set; }
+        }
+
         [HttpPost("progresso/{moduloId}/{nomeUsuario}")]
-        public async Task<IActionResult> SalvarProgresso(int moduloId, string nomeUsuario, [FromBody] double paginaAtual)
+        public async Task<IActionResult> SalvarProgresso(int moduloId, string nomeUsuario, [FromBody] ProgressoUpdateRequest request)
         {
             if (string.IsNullOrEmpty(nomeUsuario))
                 return BadRequest("Nome do usuário é obrigatório.");
@@ -32,6 +38,8 @@ namespace nexsprintAPI.Controllers
             var usuarioEncontrado = await _appDbContext.Users.FindAsync(nomeUsuario);
             if (usuarioEncontrado == null)
                 return BadRequest("Usuário não encontrado.");
+
+            double paginaAtual = request.Pagina;
 
             if (paginaAtual > moduloExistente.TotalPaginas || paginaAtual < 0)
                 return BadRequest("Dados colocados incorretamente!");
