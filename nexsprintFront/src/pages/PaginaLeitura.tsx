@@ -13,7 +13,7 @@ interface Modulo {
   titulo: string;
   autor: string;
   descricao: string;
-  capa_URL: string;
+  capa_Url: string;
   pdF_Url: string;
   totalPaginas: number;
 }
@@ -156,7 +156,7 @@ const PaginaLeitura: React.FC = () => {
 
       <div className="flex flex-col md:flex-row gap-6">
         <div className="md:w-1/6 w-full">
-          <img src={`http://localhost:5276/${modulos.capa_URL}`} alt="Capa" className="rounded shadow-lg" />
+          <img src={`http://localhost:5276/${modulos.capa_Url}`} alt="Capa" className="rounded shadow-lg" />
         </div>
         <div className="relative w-1/2">
 
