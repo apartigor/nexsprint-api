@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+body {
+    background-color: rgb(18, 18, 18);
+    color: rgb(255, 255, 255);
+    margin: 0;
+    font-family: 'Urbanist', sans-serif;
+}
+
+.rpv-core__inner-page {
+    background-color: transparent !important;
+}
