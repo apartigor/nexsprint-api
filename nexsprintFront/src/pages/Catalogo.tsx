@@ -7,7 +7,7 @@ interface Livro {
   moduloId: number;
   nome: string;
   descricao: string;
-  capa_URL: string;
+  capa_Url: string;
   pdF_Url: string;
   totalPaginas: number;
 }
@@ -77,7 +77,7 @@ const Catalogo: React.FC = () => {
             className="bg-[#023f81] rounded-xl p-4 shadow-md hover:shadow-black transition-all flex flex-col justify-between"
           >
             <img
-              src={`http://localhost:5276/${book.capa_URL}`}
+              src={`http://localhost:5276/${book.capa_Url}`}
               alt={book.nome}
               className="w-full h-64 object-cover rounded-lg mb-4"
             />
@@ -128,7 +128,7 @@ const Catalogo: React.FC = () => {
               className="bg-zinc-800 rounded-xl p-4 shadow-md hover:shadow-yellow-500/30 transition-all flex flex-col justify-between"
             >
             <img
-              src={`http://localhost:5276/${book.capa_URL}`}
+              src={`http://localhost:5276/${book.capa_Url}`}
               alt={book.nome}
               className="w-full h-64 object-cover rounded-lg mb-4"
             />
