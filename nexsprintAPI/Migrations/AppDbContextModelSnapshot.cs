@@ -24,6 +24,10 @@ namespace nexsprintAPI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("Capa_Url")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Descricao")
                         .IsRequired()
                         .HasColumnType("longtext");

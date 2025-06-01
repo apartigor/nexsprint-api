@@ -12,6 +12,8 @@ namespace nexsprintAPI.Models
         [Required]
         public string PDF_Url { get; set; }
         [Required]
+        public string Capa_Url { get; set; }
+        [Required]
         public string Descricao { get; set; }
         [Required]
         public int TotalPaginas { get; set; } = 4;
