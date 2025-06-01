@@ -104,6 +104,7 @@ namespace nexsprintAPI.Controllers
                 um.Modulo.Nome,
                 um.Modulo.PDF_Url,
                 um.Modulo.TotalPaginas,
+                um.Modulo.Capa_Url,
                 Progresso = um.Progresso
             })
             .ToListAsync();
