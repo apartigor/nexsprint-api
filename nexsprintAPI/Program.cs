@@ -21,30 +21,40 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-app.UseCors(); 
+app.UseCors();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseAuthorization();
 app.MapControllers();
 
 // query SQL inicial para adicionar os pdfs
-// using (var scope = app.Services.CreateScope())
-// {
-//     var appDbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+using (var scope = app.Services.CreateScope())
+{
+    var appDbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 
-//     // aplica as migrations pendentes
-//     await appDbContext.Database.MigrateAsync();
+    // aplica as migrations pendentes
+    await appDbContext.Database.MigrateAsync();
 
-//     // valida se o banco estiver vazio
-//     if (!appDbContext.Modulos.Any())
-//     {
-//         var querysql = @"
-//         
-//         ";
+    // valida se o banco estiver vazio
+    if (!appDbContext.Modulos.Any())
+    {
+        var querysql = @"
+        INSERT INTO modulos (Nome, PDF_Url, Descricao, TotalPaginas) VALUES
+        ('Módulo 1: Introdução ao Agile Modeling', 'pdfs/am1.pdf', 'Fundamentos do Agile Modeling para suportar a colaboração ágil', 4),
+        ('Módulo 2: Práticas Essenciais', 'pdfs/am2.pdf', 'As práticas fundamentais para uma modelagem ágil eficiente', 4),
+        ('Módulo 3: Ferramentas e Técnicas', 'pdfs/am3.pdf', 'Ferramentas práticas para facilitar sessões de modelagem.', 4),
+        ('Módulo 4: Colaboração e Comunicação', 'pdfs/am4.pdf', 'Como a modelagem impulsiona a colaboração ágil', 4),
+        ('Módulo 5: Casos Reais', 'pdfs/am5.pdf', 'Exemplos práticos de aplicação do Agile Modeling.', 4),
+        ('Módulo 6: Introdução ao Design Sprint', 'pdfs/ds1.pdf', 'Primeiro contato com Design Sprint e suas aplicações', 4),
+        ('Módulo 7: Estrutura dos 5 dias', 'pdfs/ds2.pdf', 'Como é estruturado um Design Sprint completo.', 4),
+        ('Módulo 8: Técnicas e Ferramentas', 'pdfs/ds3.pdf', 'Ferramentas práticas para potencializar o Sprint.', 4),
+        ('Módulo 9: Facilitando um Sprint', 'pdfs/ds4.pdf', 'Como liderar um Sprint de maneira eficiente.', 4),
+        ('Módulo 10: Estudos de Caso', 'pdfs/ds5.pdf', 'Aplicações reais e resultados do Design Sprint.', 4);
+         ";
 
-//         await appDbContext.Database.ExecuteSqlRawAsync(querysql);
-//     }
+        await appDbContext.Database.ExecuteSqlRawAsync(querysql);
+    }
 
-// }
+}
 
 app.Run();

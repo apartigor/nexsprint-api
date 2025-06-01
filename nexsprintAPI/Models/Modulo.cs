@@ -14,7 +14,7 @@ namespace nexsprintAPI.Models
         [Required]
         public string Descricao { get; set; }
         [Required]
-        public int TotalPaginas { get; set; }
+        public int TotalPaginas { get; set; } = 4;
 
         // Relação de muitos pra muitos
         [JsonIgnore]
