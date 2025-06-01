@@ -31,11 +31,11 @@ const PaginaLeitura: React.FC = () => {
 
 
   const progressoPorcentagem = (modulos && modulos.totalPaginas > 0)
-  ? (highestPage / modulos.totalPaginas) * 100
-  : 0;
+    ? (highestPage / modulos.totalPaginas) * 100
+    : 0;
 
 
-useEffect(() => {
+  useEffect(() => {
     axios.get(`${API_URL}/modulos/${id}`)
       .then(resp => {
         setLivro(resp.data);
@@ -65,9 +65,8 @@ useEffect(() => {
   const salvarProgresso = (pagina: number) => {
     if (!nomeUsuarioLogado) return; // sem usuário, não salva
 
-    axios.post(`${API_URL}/progresso/${id}/${nomeUsuarioLogado}`, {
-      Pagina: pagina // <--- Changed from 'pagina' to 'Pagina' (uppercase P)
-    })
+    axios
+      .post(`${API_URL}/progresso/${id}/${nomeUsuarioLogado}`, { pagina })
       .catch(err => console.error('Erro ao salvar progresso:', err));
   };
 

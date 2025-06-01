@@ -112,17 +112,21 @@ const Catalogo: React.FC = () => {
       )}
 
       {/* ========================= */}
-      {/* 🎯 Seção Meus Livros */}
+      {/* 🎯 Seção Meus modulos */}
       {/* ========================= */}
 
       <h2 className="text-3xl font-bold mb-4 mt-16">📖 Módulos em Progresso</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 xl:grid-cols-6 gap-6">
-        {filteredUserBooks.map(book => (
-          <div
-            key={book.moduloId}
-            className="bg-zinc-800 rounded-xl p-4 shadow-md hover:shadow-black transition-all flex flex-col justify-between"
-          >
+        {filteredUserBooks.map(book => {
+          const progressoPorcentagem = (book.totalPaginas > 0)
+            ? (book.progresso / book.totalPaginas) * 100
+            : 0;
+          return (
+            <div
+              key={book.moduloId}
+              className="bg-zinc-800 rounded-xl p-4 shadow-md hover:shadow-yellow-500/30 transition-all flex flex-col justify-between"
+            >
             <img
               src={`http://localhost:5276/${book.capa_URL}`}
               alt={book.nome}
@@ -135,10 +139,10 @@ const Catalogo: React.FC = () => {
             <div className="w-full bg-zinc-700 rounded-full h-3 mt-2 mb-4">
               <div
                 className="bg-[#023f81] h-3 rounded-full"
-                style={{ width: `${book.progresso}%` }}
+                style={{ width: `${progressoPorcentagem.toFixed(0)}%` }}
               ></div>
             </div>
-            <p className="text-xs text-gray-400 mb-2">Progresso: {book.progresso}%</p>
+            <p className="text-xs text-gray-400 mb-2">Progresso: {progressoPorcentagem.toFixed(0)}%</p>
 
             <div className="mt-2 flex justify-between items-center">
               <Link to={`/modulos/${book.moduloId}`}
@@ -157,7 +161,8 @@ const Catalogo: React.FC = () => {
               </a>
             </div>
           </div>
-        ))}
+          );
+        })}
       </div>
 
       {filteredUserBooks.length === 0 && (
